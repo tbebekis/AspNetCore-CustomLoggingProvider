@@ -1,0 +1,71 @@
+{
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "compounds": [
+	   {
+		   "name": "Chrome",
+		   "configurations": [
+			   "Chrome-Server",
+			   "Chrome-Client"
+		   ]
+	   }
+   ],
+   "configurations": [
+        {
+            "name": "Default",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/WebApp",
+            "stopAtEntry": false,
+            "launchBrowser": {
+                "enabled": true
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+		},
+		{
+            "name": "Chrome-Server",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/WebApp",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": false
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Chrome-Client",
+            "type": "chrome",
+            "request": "launch",
+			"url": "https://localhost:5001/",
+            "webRoot": "${workspaceRoot}/WebApp/wwwroot",
+            "sourceMaps": true
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
